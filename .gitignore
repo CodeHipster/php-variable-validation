@@ -1,2 +1,6 @@
 # Visual studio code files
 .vscode/
+
+# composer
+vendor/
+composer.lock
