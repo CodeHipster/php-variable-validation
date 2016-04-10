@@ -1,7 +1,7 @@
 <?php
-    namespace VariableValidation\validators;
-    use VariableValidation\Validator;
-    use VariableValidation\iValidatorPart;
+    namespace Validation\validators;
+    use Validation\Validator;
+    use Validation\iValidatorPart;
 
     require_once "..\Validator.class.php";
     require_once "..\iValidatorPart.interface.php";

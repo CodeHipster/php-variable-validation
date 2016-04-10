@@ -1,6 +1,6 @@
 <?php
     
-    namespace VariableValidation;
+    namespace Validation;
 
     /**
     Part of a validator. 

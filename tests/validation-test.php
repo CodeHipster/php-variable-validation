@@ -1,9 +1,9 @@
 <?php
 
-    namespace VariableValidation\tests;
-    use VariableValidation\validators\IsNumeric;
-    use VariableValidation\validators\Max;
-    use VariableValidation\validators\InRange;
+    namespace Validation\tests;
+    use Validation\validators\IsNumeric;
+    use Validation\validators\Max;
+    use Validation\validators\InRange;
 
     require_once "../validators/IsNumeric.class.php";
     require_once "../validators/Max.class.php";

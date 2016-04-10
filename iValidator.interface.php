@@ -1,6 +1,6 @@
 <?php
 
-    namespace VariableValidation;
+    namespace Validation;
 
     /**
     Validator is composed of parts and is able to validate the parts.

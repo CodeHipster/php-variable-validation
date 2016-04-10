@@ -3,7 +3,7 @@
 //Add tests
 //Turn into composer package.
 //Add messages
-    namespace VariableValidation;
+    namespace Validation;
     
     require_once "iValidator.interface.php";
     
