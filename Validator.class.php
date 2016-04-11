@@ -1,8 +1,4 @@
 <?php
-//TODO:
-//Add tests
-//Turn into composer package.
-//Add messages
     namespace Validation;
     
     require_once __DIR__ . "/iValidator.interface.php";
