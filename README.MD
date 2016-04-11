@@ -61,7 +61,8 @@ Install with composer
 ---------------------
 composer: https://getcomposer.org/
  
-composer.json  
+composer.json:
+
     {
         "repositories": [
             {
