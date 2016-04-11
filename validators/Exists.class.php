@@ -3,8 +3,8 @@
     use Validation\Validator;
     use Validation\iValidatorPart;
     
-    require_once __DIR__ . "\..\Validator.class.php";
-    require_once __DIR__ . "\..\iValidatorPart.interface.php";
+    require_once __DIR__ . "/../Validator.class.php";
+    require_once __DIR__ . "/../iValidatorPart.interface.php";
 
     /**
     Validator to validate if variable exists.

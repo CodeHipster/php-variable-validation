@@ -5,7 +5,7 @@
 //Add messages
     namespace Validation;
     
-    require_once __DIR__ . "\iValidator.interface.php";
+    require_once __DIR__ . "/iValidator.interface.php";
     
     /**
     A Validator is composed of multiple iValidatorParts.
