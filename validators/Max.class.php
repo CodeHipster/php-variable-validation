@@ -3,9 +3,9 @@
     use Validation\Validator;
     use Validation\iValidatorPart;
 
-    require_once "..\Validator.class.php";
-    require_once "..\iValidatorPart.interface.php";
-    require_once "IsNumeric.class.php";
+    require_once __DIR__ . "\..\Validator.class.php";
+    require_once __DIR__ . "\..\iValidatorPart.interface.php";
+    require_once __DIR__ . "\IsNumeric.class.php";
 
     /**
     Validator to validate a maximum value.

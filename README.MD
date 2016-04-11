@@ -10,7 +10,7 @@ Usage
         namespace YourNameSpace;
         use Validation\validators\InRange;
 
-        require_once "vendor/CodeHipster/validators/InRange.class.php";
+        require_once "vendor\CodeHipster\validation\validators\InRange.class.php";
 
         $in_range_validator = new InRange(3,6);
 
@@ -31,9 +31,9 @@ Usually you can just extend Validator and implement an iValidatorPart.
         use Validation\Validator;
         use Validation\iValidatorPart;
 
-        require_once "vendor\CodeHipster\Validator.class.php";
-        require_once "vendor\CodeHipster\iValidatorPart.interface.php";
-        require_once "Exists.class.php";
+        require_once "vendor\CodeHipster\validation\Validator.class.php";
+        require_once "vendor\CodeHipster\validation\iValidatorPart.interface.php";
+        require_once "vendor\CodeHipster\validation\validators\Exists.class.php";
 
         class YourValidator extends Validator implements iValidatorPart{
             

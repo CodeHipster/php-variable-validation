@@ -3,10 +3,10 @@
     use Validation\Validator;
     use Validation\iValidatorPart;
 
-    require_once "..\Validator.class.php";
-    require_once "..\iValidatorPart.interface.php";
-    require_once "Max.class.php";
-    require_once "Min.class.php";    
+    require_once __DIR__ . "\..\Validator.class.php";
+    require_once __DIR__ . "\..\iValidatorPart.interface.php";
+    require_once __DIR__ . "\Max.class.php";
+    require_once __DIR__ . "\Min.class.php";    
 
     /**
     Validator to check if variable is within range.
