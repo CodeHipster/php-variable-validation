@@ -1,31 +1,21 @@
 <?php
     namespace Validation\validators;
-    use Validation\Validator;
-    use Validation\iValidatorPart;
     
     require_once __DIR__ . "/../Validator.class.php";
-    require_once __DIR__ . "/../iValidatorPart.interface.php";
+    use Validation\Validator;
+    
+    require_once __DIR__ . "/../validatorparts/existspart.class.php";
+    use Validation\ValidatorParts\ExistsPart;
 
     /**
     Validator to validate if variable exists.
     */
-    class Exists extends Validator implements iValidatorPart{
+    class Exists extends Validator{
         
-        function __construct(){            
-            parent::__construct($this);
-        }
-        
-        /**
-        Validate if variable exists.
-        */
-        public function validate_method($var){            
-            if(isset($var)){
-                return null;
-            }
-            else{
-                return "does not exist";
-            }           
-        }
+        function __construct($message = null){
+            $exists_part = new ExistsPart($message);            
+            parent::__construct($exists_part);
+        }        
     }
 
 ?>

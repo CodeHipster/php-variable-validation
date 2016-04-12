@@ -12,7 +12,7 @@
     require_once "../validators/Min.class.php";
     require_once "../validators/Exists.class.php";
 
-class ExistsTest extends PHPUnit_Framework_TestCase
+class ValidatorTests extends PHPUnit_Framework_TestCase
 {
     
     function test_Exists_validate(){

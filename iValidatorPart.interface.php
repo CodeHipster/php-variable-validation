@@ -13,6 +13,10 @@
         */
         function validate_method($var);
         
+        /**
+        Set the error message for this validator part.
+        */
+        function set_message($error_message);        
     }
 
 ?>

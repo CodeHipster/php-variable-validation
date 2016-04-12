@@ -1,32 +1,24 @@
 <?php
     namespace Validation\validators;
-    use Validation\Validator;
-    use Validation\iValidatorPart;
 
     require_once __DIR__ . "/../Validator.class.php";
-    require_once __DIR__ . "/../iValidatorPart.interface.php";
-    require_once __DIR__ . "/Exists.class.php";
+    use Validation\Validator;
+    
+    require_once __DIR__ . "/../validatorparts/isnumericpart.class.php";
+    use Validation\ValidatorParts\IsNumericPart;
+    
+    require_once __DIR__ . "/Exists.class.php";    
 
     /**
     Validator to validate if variable is numeric.
+    Uses messages: "Exist" and "IsNumeric"
     */
-    class IsNumeric extends Validator implements iValidatorPart{
+    class IsNumeric extends Validator{
         
-        function __construct(array $messages = null){
-            $exists_validator = new Exists();
-            parent::__construct($this,...$exists_validator->get_parts());
+        function __construct($messages = null){
+            $exists_validator = new Exists($messages["Exists"]);
+            $is_numeric_part = new IsNumericPart($messages["IsNumeric"]);
+            parent::__construct($is_numeric_part, ...$exists_validator->get_parts());
         }
-        
-        /**
-        Validate if variable is numeric.
-        */
-        public function validate_method($var){
-            if(is_numeric($var)){
-                return null;
-            }else{
-                return "not numeric";
-            }
-        }        
     }
-    
-   ?>
+?>

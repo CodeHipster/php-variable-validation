@@ -1,39 +1,29 @@
 <?php
     namespace Validation\validators;
-    use Validation\Validator;
-    use Validation\iValidatorPart;
+    
+    require_once __DIR__ . "/IsNumeric.class.php";
 
     require_once __DIR__ . "/../Validator.class.php";
-    require_once __DIR__ . "/../iValidatorPart.interface.php";
-    require_once __DIR__ . "/IsNumeric.class.php";
+    use Validation\Validator;
+    
+    require_once __DIR__ . "/../validatorparts/maxpart.class.php";
+    use Validation\ValidatorParts\MaxPart;
 
     /**
     Validator to validate a maximum value.
     */
-    class Max extends Validator implements iValidatorPart{
-        
-        private $max;
+    class Max extends Validator{
         
         /**
         Max is maximum allowed value.
+        Uses messages: "Exists","IsNumeric","Max"
         */
-        function __construct($max){
-            $this->max = $max;
+        function __construct($max, $messages = null){
             
-            $is_numeric_validator = new IsNumeric(); 
-            parent::__construct($this, ...$is_numeric_validator->get_parts());
-        }
-        
-        /**
-        Validate if variable is equal or smaller then maximum allowed.
-        */
-        public function validate_method($var){
-            if($var > $this->max){
-                return "greater then {$this->max}";
-            }else{
-                return null;
-            }
-        }        
+            $is_numeric_validator = new IsNumeric($messages);
+            $max_part = new MaxPart($max, $messages["Max"]);
+            parent::__construct($max_part, ...$is_numeric_validator->get_parts());
+        }       
     }
     
    ?>
