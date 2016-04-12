@@ -5,7 +5,7 @@
     use Validation\ValidatorPart;
 
     /**
-    Validator to validate if variable exists.
+    ValidatorPart to validate if variable is equal or smaller then maximum allowed.
     */
     class MaxPart extends ValidatorPart{
         private $max;

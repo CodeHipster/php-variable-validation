@@ -5,7 +5,7 @@
     use Validation\ValidatorPart;
 
     /**
-    Validator to validate if variable exists.
+    ValidatorPart to validate if variable is numeric.
     */
     class IsNumericPart extends ValidatorPart{
         

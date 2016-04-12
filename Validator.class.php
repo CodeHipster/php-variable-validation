@@ -5,7 +5,7 @@
     require_once __DIR__ . "/ValidatorPart.class.php";
     
     /**
-    A Validator is composed of multiple iValidatorParts including itself..
+    A Validator is composed of multiple iValidatorParts.
     */
     class Validator implements iValidator{        
         private $validation_parts = array();
