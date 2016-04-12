@@ -11,7 +11,7 @@
 
     /**
     Validator to validate a minimum value.
-        Uses messages: "Exists","IsNumeric","Min"
+    Uses messages: "Exists","IsNumeric","Min"
     */
     class Min extends Validator{
         
