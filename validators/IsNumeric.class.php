@@ -16,7 +16,7 @@
     class IsNumeric extends Validator{
         
         function __construct($messages = null){
-            $exists_validator = new Exists($messages["Exists"]);
+            $exists_validator = new Exists($messages);
             $is_numeric_part = new IsNumericPart($messages["IsNumeric"]);
             parent::__construct($is_numeric_part, ...$exists_validator->get_parts());
         }

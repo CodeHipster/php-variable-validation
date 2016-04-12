@@ -14,32 +14,43 @@
 
 class ValidatorTests extends PHPUnit_Framework_TestCase
 {
+    private $custom_messages = array(
+        "Exists"=>"Custom Exists message",
+        "IsNumeric"=>"Custom IsNumeric message",
+        "Max"=>"Custom Max message",
+        "Min"=>"Custom Min message");
     
     function test_Exists_validate(){
         //arrange        
         $validator = new Exists();
+        $validator_custom = new Exists($this->custom_messages);
         
         //act
-        $result = $validator->validate(null);
-        $result2 = $validator->validate("a string variable");
+        $default = $validator->validate(null);
+        $null = $validator->validate("a string variable");
+        $custom = $validator_custom->validate(null);        
         
         //assert
-        $this->assertEquals('does not exist', $result);
-        $this->assertEquals(null, $result2);        
+        $this->assertEquals('does not exist', $default);
+        $this->assertEquals(null, $null);
+        $this->assertEquals($this->custom_messages["Exists"], $custom);
     }
     
     public function test_IsNumeric_validate()
     {
         //arrange        
         $validator = new IsNumeric();
+        $validator_custom = new IsNumeric($this->custom_messages);
         
         //act
-        $result = $validator->validate("nah, not a number");
-        $result2 = $validator->validate(68);
+        $default = $validator->validate("nah, not a number");
+        $null = $validator->validate(68);
+        $custom = $validator_custom->validate("nah, not a number");
         
         //assert
-        $this->assertEquals('not numeric', $result);
-        $this->assertEquals(null, $result2);
+        $this->assertEquals('not numeric', $default);
+        $this->assertEquals(null, $null);
+        $this->assertEquals($this->custom_messages["IsNumeric"], $custom);
     }
     
     
@@ -48,44 +59,55 @@ class ValidatorTests extends PHPUnit_Framework_TestCase
         $max = 6;
         $min = 3;
         $validator = new InRange($min,$max);
+        $validator_custom = new InRange($min,$max,$this->custom_messages);
         
         //act
-        $result = $validator->validate(9);
-        $result2 = $validator->validate(2);
-        $result3 = $validator->validate(4);
+        $default_greater = $validator->validate(9);
+        $default_smaller = $validator->validate(2);
+        $null = $validator->validate(4);
+        $custom_greater = $validator_custom->validate(9);
+        $custom_smaller = $validator_custom->validate(2);
         
         //assert
-        $this->assertEquals("greater then {$max}", $result);        
-        $this->assertEquals("smaller then {$min}", $result2);       
-        $this->assertEquals(null, $result3);        
+        $this->assertEquals("greater then {$max}", $default_greater);        
+        $this->assertEquals("smaller then {$min}", $default_smaller);       
+        $this->assertEquals(null, $result3);
+        $this->assertEquals($this->custom_messages["Max"], $custom_greater);
+        $this->assertEquals($this->custom_messages["Min"], $custom_smaller);
     }
     
     function test_Max_validate(){
         //arrange   
         $max = 6;     
         $validator = new Max($max);
+        $validator_custom = new Max($max,$this->custom_messages);
         
         //act
-        $result = $validator->validate(8);
-        $result2 = $validator->validate(4);
+        $default = $validator->validate(8);
+        $null = $validator->validate(4);
+        $custom = $validator_custom->validate(8);
         
         //assert
-        $this->assertEquals("greater then {$max}", $result);
-        $this->assertEquals(null, $result2);        
+        $this->assertEquals("greater then {$max}", $default);
+        $this->assertEquals(null, $null);
+        $this->assertEquals($this->custom_messages["Max"], $custom);
     }
     
     function test_Min_validate(){
         //arrange   
         $min = 3;     
         $validator = new Min($min);
+        $validator_custom = new Min($min,$this->custom_messages);
         
         //act
-        $result = $validator->validate(2);
-        $result2 = $validator->validate(4);
+        $default = $validator->validate(2);
+        $null = $validator->validate(4);
+        $custom = $validator_custom->validate(2);
         
         //assert    
-        $this->assertEquals("smaller then {$min}", $result);
-        $this->assertEquals(null, $result2);            
+        $this->assertEquals("smaller then {$min}", $default);
+        $this->assertEquals(null, $null);
+        $this->assertEquals($this->custom_messages["Min"], $custom);
     }    
 }
 ?>

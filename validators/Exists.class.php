@@ -9,11 +9,12 @@
 
     /**
     Validator to validate if variable exists.
+    Uses message: "Exists"
     */
     class Exists extends Validator{
         
-        function __construct($message = null){
-            $exists_part = new ExistsPart($message);            
+        function __construct($messages = null){
+            $exists_part = new ExistsPart($messages["Exists"]);           
             parent::__construct($exists_part);
         }        
     }
