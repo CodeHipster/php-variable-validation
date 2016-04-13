@@ -13,7 +13,7 @@
     Validator to validate if key exists in given array.
     Uses messages: "Exists", "KeyExists"
     */
-    class Exists extends Validator{
+    class KeyExists extends Validator{
         
         function __construct(array $map, $messages = null){
             $exists_validator = new Exists($messages);

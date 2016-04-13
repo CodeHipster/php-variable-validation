@@ -1,16 +1,18 @@
 <?php
 
-    use Validation\validators\IsNumeric;
-    use Validation\validators\Max;
-    use Validation\validators\InRange;
-    use Validation\validators\Exists;
-    use Validation\validators\Min;
-
     require_once "../validators/IsNumeric.class.php";
+    use Validation\validators\IsNumeric;
     require_once "../validators/Max.class.php";
+    use Validation\validators\Max;
     require_once "../validators/InRange.class.php";
-    require_once "../validators/Min.class.php";
+    use Validation\validators\InRange;
     require_once "../validators/Exists.class.php";
+    use Validation\validators\Exists;
+    require_once "../validators/Min.class.php";
+    use Validation\validators\Min;
+    require_once "../validators/KeyExists.class.php";
+    use Validation\validators\KeyExists;
+
 
 class ValidatorTests extends PHPUnit_Framework_TestCase
 {
@@ -18,7 +20,8 @@ class ValidatorTests extends PHPUnit_Framework_TestCase
         "Exists"=>"Custom Exists message",
         "IsNumeric"=>"Custom IsNumeric message",
         "Max"=>"Custom Max message",
-        "Min"=>"Custom Min message");
+        "Min"=>"Custom Min message",
+        "KeyExists"=>"Custom KeyExists message");
     
     function test_Exists_validate(){
         //arrange        
@@ -108,6 +111,23 @@ class ValidatorTests extends PHPUnit_Framework_TestCase
         $this->assertEquals("smaller then {$min}", $default);
         $this->assertEquals(null, $null);
         $this->assertEquals($this->custom_messages["Min"], $custom);
-    }    
+    }
+    
+    function test_KeyExists_validate(){
+        //arrange   
+        $map = array("test" => 1, "test2" => 2);     
+        $validator = new KeyExists($map);
+        $validator_custom = new KeyExists($map,$this->custom_messages);
+        
+        //act
+        $default = $validator->validate("non existent key");
+        $null = $validator->validate("test2");
+        $custom = $validator_custom->validate("non existent key");
+        
+        //assert    
+        $this->assertEquals("key does not exist", $default);
+        $this->assertEquals(null, $null);
+        $this->assertEquals($this->custom_messages["KeyExists"], $custom);
+    }
 }
 ?>
