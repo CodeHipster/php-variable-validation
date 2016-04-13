@@ -1,13 +1,13 @@
 <?php
     namespace Validation\validators;
+    
+    require_once __DIR__ . "/Exists.class.php";    
 
     require_once __DIR__ . "/../Validator.class.php";
     use Validation\Validator;
     
     require_once __DIR__ . "/../validatorparts/isnumericpart.class.php";
     use Validation\ValidatorParts\IsNumericPart;
-    
-    require_once __DIR__ . "/Exists.class.php";    
 
     /**
     Validator to validate if variable is numeric.
