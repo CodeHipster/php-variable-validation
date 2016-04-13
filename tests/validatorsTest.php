@@ -12,8 +12,8 @@
     use Validation\validators\Min;
     require_once "../validators/KeyExists.class.php";
     use Validation\validators\KeyExists;
-    require_once "../validators/NotEmpty.class.php";
-    use Validation\validators\NotEmpty;
+    require_once "../validators/NotEmptyString.class.php";
+    use Validation\validators\NotEmptyString;
 
 class ValidatorTests extends PHPUnit_Framework_TestCase
 {
@@ -23,7 +23,7 @@ class ValidatorTests extends PHPUnit_Framework_TestCase
         "Max"=>"Custom Max message",
         "Min"=>"Custom Min message",
         "KeyExists"=>"Custom KeyExists message",
-        "NotEmpty"=>"Custom NotEmpty message");
+        "NotEmptyString"=>"Custom NotEmptyString message");
     
     function test_Exists_validate(){
         //arrange        
@@ -132,21 +132,23 @@ class ValidatorTests extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->custom_messages["KeyExists"], $custom);
     }
     
-    function test_NotEmpty_validate(){
+    function test_NotEmptyString_validate(){
         //arrange             
-        $validator = new NotEmpty();
-        $validator_custom = new NotEmpty($this->custom_messages);
+        $validator = new NotEmptyString();
+        $validator_custom = new NotEmptyString($this->custom_messages);
         
         //act
         $default = $validator->validate("");
         $null_string = $validator->validate("not empty string");
         $null_array = $validator->validate(array("not empty array"));
+        $null_zero = $validator->validate(0);
         $custom = $validator_custom->validate(array());
         
         //assert    
-        $this->assertEquals("empty", $default);
+        $this->assertEquals("empty string", $default);
         $this->assertEquals(null, $null_string);
         $this->assertEquals(null, $null_array);
+        $this->assertEquals(null, $null_zero);
         $this->assertEquals($this->custom_messages["NotEmpty"], $custom);
     }
 }

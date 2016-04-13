@@ -5,19 +5,19 @@
     use Validation\ValidatorPart;
 
     /**
-    ValidatorPart to validate if variable is not empty.
+    ValidatorPart to validate if variable is not an empty string.
     */
-    class NotEmptyPart extends ValidatorPart{
+    class NotEmptyStringPart extends ValidatorPart{
         
         function __construct($message = null){
-            parent::__construct($message ?? "empty");
+            parent::__construct($message ?? "empty string");
         }
         
         /**
-        Validate if variable is not empty.
+        Validate if variable is not an empty string.
         */
         public function validate_method($var){
-            if(empty($var)){
+            if($var === ""){
                 return $this->fail_message;
             }else{
                 return null;
